@@ -46,7 +46,7 @@
                       </div>
                       <div *ngIf="this.registerForm.get('user_id')?.touched&&this.registerForm.get('user_id')?.errors">Invalid user ID</div>
                       <div class="input-group mt-3" >
-                        <input type="text" class="form-control" placeholder="Enter password" formControlName="user_password" name="user_password" >
+                        <input type="password" class="form-control" placeholder="Enter password" formControlName="user_password" name="user_password" >
                     </div>
                     <div *ngIf="this.registerForm.get('user_password')?.touched&&this.registerForm.get('user_password')?.errors">Invalid password</div>
                     <div class="mt-3">

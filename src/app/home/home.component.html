@@ -21,14 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-0 mb-2 mb-lg-0 ms-auto" id="nav">
                 <li>
-                  <button class="btn btn-warning" (click)="deleteAcc()">Delete account</button>
+                  <button class="btn btn-primary" (click)="deleteAcc()">Delete account</button>
                   </li>
-                  &nbsp;                  &nbsp;
                   &nbsp;
                   &nbsp;
 
                 <li>
-                  <button class="btn btn-warning" (click)="logout()">Log out</button>
+                  <button class="btn btn-primary" (click)="logout()">Log out</button>
                   </li>
                   
               </ul>
@@ -37,7 +36,10 @@
           </div>
         </nav>
       </div>
-      
+      <div  style="margin-left: 10px;">
+        <h2>Welcome {{user_name}}</h2>
+
+      </div>
       
       <div class="container row " style="margin: auto;">
         <div class="col-4"></div>
@@ -45,7 +47,7 @@
                 <form action="" [formGroup]="eventForm" (ngSubmit)="addevent()">
                         <h4 style="text-align: center;">Add Event</h4>
                         <div class="input-group mt-3" >
-                            <input type="date" class="form-control" placeholder="Enter event date" formControlName="rem_date" name="rem_date" [(ngModel)]="rem_date">
+                            <input type="date" class="form-control" placeholder="Enter event date" formControlName="rem_date" name="rem_date"  minDate="0"  [(ngModel)]="rem_date">
                         </div>
                         <div *ngIf="this.eventForm.get('rem_date')?.touched&&this.eventForm.get('rem_date')?.errors">Invalid event date</div>
                       <div class="input-group mt-3" >

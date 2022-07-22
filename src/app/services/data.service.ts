@@ -51,6 +51,13 @@ export class DataService {
     })
     return this.http.post('http://localhost:3001/updateEvent',data,this.getOptions())
   }
+  // chooseDate(user_id:any,event_date:any){
+  //   // const data=({
+  //   //   user_id,event_date
+  //   // })
+  //   return this.http.get('http://localhost:3001/chooseDate'+event_date,this.getOptions())
+
+  // }
   getOptions(){
     const token=localStorage.getItem("token")
     let headers=new HttpHeaders()

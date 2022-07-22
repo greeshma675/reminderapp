@@ -15,9 +15,13 @@ export class HomeComponent implements OnInit {
  rem_date:any
  rem_desc:any
  index:any
+ user_name:any
+ currentDate:any=Date()
   constructor(private fb:FormBuilder,private ds:DataService,private router:Router,private ar:ActivatedRoute) { 
-    console.log(this.ar.snapshot.paramMap.get('my_object'));
-    console.log(this.ar.snapshot.paramMap.get('index'));
+    // console.log(this.ar.snapshot.paramMap.get('my_object'));
+    // console.log(this.ar.snapshot.paramMap.get('index'));
+    this.currentDate= new Date().toISOString().slice(0, 10);    
+    this.user_name=localStorage.getItem("currentUser")
     if(this.ar.snapshot.paramMap.get('my_object')==null)
     {
       this.btn_name="Add event"
@@ -58,7 +62,11 @@ export class HomeComponent implements OnInit {
   addevent(){
     var rem_date=this.eventForm.value.rem_date
     var rem_desc=this.eventForm.value.rem_desc
+    console.log("re"+rem_date);
+    console.log(this.currentDate);
+    
    if(this.eventForm.valid){
+    if(rem_date>=this.currentDate){
     var user_id=localStorage.getItem("currentUserId")
     if(this.btn_name=='Add event'){
       this.ds.addevent(user_id,rem_date,rem_desc).subscribe((result:any)=>{
@@ -76,6 +84,10 @@ export class HomeComponent implements OnInit {
       },result=>alert(result.error.message))
     }
    }else{
+    alert("Invalid date")
+   }
+  }
+   else{
     alert("Invalid form")
    }
   }
